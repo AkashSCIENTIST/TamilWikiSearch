@@ -1,0 +1,21 @@
+{
+    "name": "tamilwiki",
+    "storage_type": "disk",
+    "shard_num": 3,
+    "mappings": {
+        "properties": {
+            "title": {
+                "type": "text",
+                "index": true,
+                "store": true,
+                "highlightable": true
+            },
+            "content": {
+                "type": "text",
+                "index": true,
+                "store": true,
+                "highlightable": true
+            }
+        }
+    }
+}
