@@ -1,7 +1,11 @@
 from flask import Flask, request
 import requests
+from flask_cors import CORS, cross_origin
+
 
 app = Flask(__name__)
+CORS(app, support_credentials=True)
+
 
 def search(tamil_text, english_text):
     print(tamil_text, english_text)
@@ -18,10 +22,10 @@ def search(tamil_text, english_text):
         "sort_fields": ["_score"]
     }
     response = requests.post(url, json=data, auth=(username, password))
-    print(response)
     return response.json()
 
 @app.route('/', methods=['POST'])
+@cross_origin(supports_credentials=True)
 def submit_form():
     print(request.form.__dict__)
     tamil_text = request.form.get('tamil_text')
